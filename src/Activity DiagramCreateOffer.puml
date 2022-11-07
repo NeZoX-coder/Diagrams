@@ -1,0 +1,41 @@
+@startuml
+
+
+start
+
+:Команда CLI;
+
+:Парсинг команды createOffer;
+
+skinparam ConditionEndStyle hline
+
+if (Все верно?) then (Да)
+    :Чтение аргументов;
+
+    :Выполнение команды createOffer;
+
+    :Выполнение команды postOffer;
+
+    :Выполнение команды
+     searchingCompetitors;
+
+    :Формирование
+     сообщения о
+     результате
+     выполнения;
+else (Нет)
+
+endif
+
+:Сообщение;
+
+:Вывод ответа в консоль ;
+
+
+
+
+
+stop
+
+
+@enduml

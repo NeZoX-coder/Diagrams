@@ -1,0 +1,42 @@
+@startuml
+
+
+start
+
+:Команда CLI;
+
+:Парсинг команды createProfile;
+
+skinparam ConditionEndStyle hline
+
+if (Все верно?) then (Да)
+    :Чтение аргументов;
+
+    :Выполнение команды createProfile;
+
+    if (Все верно?) then (Да)
+    :Выполнить команду
+     createClientProfile;
+     else (Нет)
+     :Выполнить команду
+      createHotelProfile;
+    endif
+
+    :Формирование
+     сообщения о
+     результате
+     выполнения;
+else (Нет)
+
+endif
+
+:Сообщение;
+
+:Вывод ответа в консоль ;
+
+
+
+stop
+
+
+@enduml

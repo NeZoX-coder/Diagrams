@@ -1,0 +1,51 @@
+@startuml
+
+
+class Profile {
+    #userID : int
+    #name : string
+    #city : string
+    #ratingProfile : int
+    #phoneNumber : string
+    #client : bool
+    #feedbacks : Feedback*
+}
+
+class ProfileHotel {
+    -description : string
+    -additionalServices : string
+    -hotelPolicy : string
+}
+
+class ProfileClient {
+    -surname : string
+    -passportSeries : int
+    -passportNumber : int
+    -email : string
+}
+
+class Feedback {
+    -feedbackID : int
+    -userIDTo : int
+    -userIDFrom : int
+    -text : string
+    -date : string
+    -rating : int
+}
+
+class Advertisement {
+    -address : string
+    -price : int
+    -favourites : bool
+    -ProfileHotel : ProfileHotel
+}
+
+Profile <|-- ProfileClient
+Profile <|-right- ProfileHotel
+
+Profile o-left- Feedback:#feedbacks         1..*
+ProfileClient -right-* Advertisement:-ProfileClient
+
+
+
+@enduml

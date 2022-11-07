@@ -1,0 +1,47 @@
+@startuml
+
+
+
+left to right direction
+
+
+'System #yellow;line:red
+User #yellow;line:red
+(createProfile) #yellow;line:red
+(addClientProfileInfo) #yellow;line:red
+(addHotelProfileInfo) #yellow;line:red
+(searchHotelRoom) #yellow;line:red
+(makeFeedback) #yellow;line:red
+(createOffer) #yellow;line:red
+(postOffer) #yellow;line:red
+(searchingCompetitors) #yellow;line:red
+(createHotelProfile) #yellow;line:red
+(createClientProfile) #yellow;line:red
+
+
+User ---- (createProfile) #line:red
+User ---- (addClientProfileInfo) #line:red
+User ---- (addHotelProfileInfo) #line:red
+User ---- (searchHotelRoom) #line:red
+User ---- (makeFeedback) #line:red
+User ---- (createOffer) #line:red
+
+
+(createProfile) <..up.. (createHotelProfile) #line:red :<extend>
+(createClientProfile) ..up..> (createProfile) #line:red :<extend>
+
+
+
+(createProfile) ---- System#line:red
+(addClientProfileInfo) ---- System#line:red
+(addHotelProfileInfo) ---- System#line:red
+(searchHotelRoom) ---- System#line:red
+(makeFeedback) ---- System#line:red
+(createOffer) ---- System#line:red
+
+
+(createOffer) <..down.. (postOffer) #line:red :<include>
+(searchingCompetitors) ..down..> (createOffer) #line:red :<include>
+
+
+@enduml
