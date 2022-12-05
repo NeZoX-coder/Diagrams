@@ -1,0 +1,107 @@
+@startuml
+
+
+left to right direction
+
+Main -- .
+
+component . {
+    component DataProvider {
+    portout DP3
+    portout DP2
+    portout DP1
+    }
+    component ConfigurationUtils{
+    portin CU1
+    }
+    component DataProviderCSV {
+    portout DPS1
+    portin DPS2
+    }
+    component DataProviderXML{
+    portout DPX1
+    portin DPX2
+    }
+    component DataProviderJDBC{
+    portout DPJ1
+    portin DPJ2
+    }
+    component log4j2.properties{
+        portout log4j21
+        portin log4j22
+    }
+    component DataProviderCSVTest {
+        portout DPST1
+        portin DPST2
+    }
+    component DataProviderXMLTest{
+        portout DPXT1
+        portin DPXT2
+    }
+    component DataProviderJDBCTest{
+        portout DPJT1
+        portin DPJT2
+    }
+    portout 5
+    portout 4
+    portout 1
+    portout 2
+    portout 3
+
+}
+
+    component OpenCSV {
+    portin OC1
+    }
+    component SimpleXML{
+    portin SX1
+    }
+    component JDBC{
+    portin J1
+    portout J2
+    }
+    component Log4j2{
+    portin L1
+    }
+    component JUnit{
+    portin JU1
+    }
+    component MySQL{
+    portin MS1
+    }
+
+DP3 -[thickness=0]0)-- DPS2
+DP2 -[thickness=0]0)-- DPX2
+DP1 -[thickness=0]0)-- DPJ2
+
+DPS1 -[thickness=0]0)-- 1
+DPX1 -[thickness=0]0)-- 2
+DPJ1 -[thickness=0]0)-- 3
+log4j21 -[thickness=0]0)-- 4
+DPXT1 -[thickness=0]0)-- 5
+
+
+L1 --up(0-- 4
+JU1 --up(0-- 5
+OC1 --[hidden]up(0-- 1
+SX1 --up(0-- 2
+J1 --[hidden]up(0-- 3
+OC1 --up(0-- 3
+J1 --up(0-- 1
+
+J2 --0)-- MS1
+
+
+1 -right[hidden]- 2
+2 -right[hidden]- 3
+3 -right[hidden]- 4
+
+
+log4j2.properties --left[hidden]-- DataProviderCSV
+DataProviderCSV -left[hidden]- DataProviderCSVTest
+DataProviderCSVTest -left[hidden]- DataProviderXMLTest
+DataProviderXMLTest -left[hidden]- DataProviderJDBCTest
+
+
+
+@enduml
